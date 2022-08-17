@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 20:36:32 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/06/29 00:36:20 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/17 04:37:46 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int		ft_lstsize(t_list *lst);
 int		ft_memcmp(void *s1, void *s2, size_t n);
 int		ft_strlen(char *str);
 char	*ft_itoa(int n);
+char	*ft_itohex(unsigned int arg);
 char	*ft_matrix_to_str(char **matrix);
 char	*ft_strchr(char *s, int c);
 char	*ft_strdup(char *s);
