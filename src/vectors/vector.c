@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 21:54:53 by acarneir          #+#    #+#             */
-/*   Updated: 2022/08/17 22:30:04 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/17 23:01:06 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ double	vector_length(t_vec3 a)
 	double	length;
 
 	length = a.x * a.x + a.y * a.y + a.z * a.z;
-	printf("len = %f\n", length);
 	length = sqrt(length);
 	return (length);
 }

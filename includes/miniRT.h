@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/17 22:25:09 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/17 23:00:35 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ typedef struct s_vec3
 t_vec3	create_vector(double x, double y, double z);
 t_vec3	vector_add(t_vec3 a, t_vec3 b);
 t_vec3	vector_sub(t_vec3 a, t_vec3 b);
-t_vec3	vector_mul(t_vec3 a, double b);
+t_vec3	vector_mul(t_vec3 a, t_vec3 b);
+t_vec3	vector_mul_scal(t_vec3 a, double b);
 t_vec3	vector_div(t_vec3 a, double b);
+t_vec3	vector_cross(t_vec3 a, t_vec3 b);
 double	vector_length(t_vec3 a);
+double	vector_dot(t_vec3 a, t_vec3 b);
+t_vec3	unit_vector(t_vec3 a);
 #endif

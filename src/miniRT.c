@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:06:00 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/17 22:26:22 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/17 23:02:17 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ int	main(void)
 	// mlx_loop(mlx.ptr);
 	// t_vec3	a;
 	t_vec3	b;
-	double	n;
-	// t_vec3	c;
+	// double	n;
 
 	// a = create_vector(1, 2, 3);
 	b = create_vector(4, 5, 6);
-	n = vector_length(b);
-	printf("n -> %f\n", n);
+	b = unit_vector(b);
+	printf("b -> x = %f, y = %f, z = %f\n", b.x, b.y, b.z);
+	// printf("n -> %f\n", n);
 	return (0);
 }
