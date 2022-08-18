@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/08/17 03:16:32 by rfelipe-         ###   ########.fr        #
+#    Updated: 2022/08/17 22:32:50 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ MLX_DIR = mlx_linux
 MLX = mlx_linux/libmlx.a
 
 SRC_DIR = src
-SRC = $(SRC_DIR)/miniRT.c
+SRC = $(SRC_DIR)/miniRT.c \
+		$(SRC_DIR)/vectors/vector.c \
+		$(SRC_DIR)/vectors/vector_multiplications.c 
 
 INCLUDE_DIR = includes
 INCLUDE = $(INCLUDE_DIR)/miniRT.h
@@ -34,11 +36,12 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 all: $(NAME)
 
 $(NAME): $(LIBFT) $(MLX) $(OBJ)
-	@$(CC) -lm $(OBJ) $(LIBFT) -L$(MLX_DIR) $(MLX_FLAGS) -o $(NAME)
+	@$(CC) $(OBJ) $(LIBFT) -L$(MLX_DIR) $(MLX_FLAGS) -o $(NAME) -lm
 	@echo "MiniRT compiled!"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/vectors
 	@$(CC) -c $(FLAGS) -I$(INCLUDE_DIR) -o $@ $<
 
 $(LIBFT):
