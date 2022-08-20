@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/08/17 22:32:50 by acarneir         ###   ########.fr        #
+#    Updated: 2022/08/20 02:46:23 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ MLX = mlx_linux/libmlx.a
 SRC_DIR = src
 SRC = $(SRC_DIR)/miniRT.c \
 		$(SRC_DIR)/vectors/vector.c \
-		$(SRC_DIR)/vectors/vector_multiplications.c 
+		$(SRC_DIR)/vectors/vector_multiplications.c \
+		$(SRC_DIR)/utils/color.c
 
 INCLUDE_DIR = includes
 INCLUDE = $(INCLUDE_DIR)/miniRT.h
@@ -42,6 +43,7 @@ $(NAME): $(LIBFT) $(MLX) $(OBJ)
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)
 	@mkdir -p $(OBJ_DIR)
 	@mkdir -p $(OBJ_DIR)/vectors
+	@mkdir -p $(OBJ_DIR)/utils
 	@$(CC) -c $(FLAGS) -I$(INCLUDE_DIR) -o $@ $<
 
 $(LIBFT):
