@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/08/20 02:46:23 by rfelipe-         ###   ########.fr        #
+#    Updated: 2022/08/19 22:51:23 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = miniRT
 CC = cc
 FLAGS = -g -Wall -Wextra -Werror
 MLX_FLAGS = -lmlx -lXext -lX11
+VALGRIND = valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes --tool=memcheck -q ./miniRT
 
 LIBFT_DIR = ./libft
 LIBFT = libft/libft.a
@@ -24,6 +25,7 @@ MLX = mlx_linux/libmlx.a
 
 SRC_DIR = src
 SRC = $(SRC_DIR)/miniRT.c \
+		$(SRC_DIR)/calc.c \
 		$(SRC_DIR)/vectors/vector.c \
 		$(SRC_DIR)/vectors/vector_multiplications.c \
 		$(SRC_DIR)/utils/color.c
@@ -66,5 +68,10 @@ fclean: clean
 	@echo "Project cleaned up!"
 
 re: fclean all
+
+valgrind: all
+	@$(VALGRIND)
+
+v: valgrind
 
 .PHONY:	all clean fclean re

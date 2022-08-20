@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/20 03:13:06 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/19 22:50:58 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_vec3
 
 typedef struct s_rtx
 {
-	t_mlx	*mlx;
+	t_mlx	mlx;
 	t_maps	maps;
 }	t_rtx;
 
@@ -60,5 +60,6 @@ t_vec3	unit_vector(t_vec3 a);
 void	color_unnormalizer(double *norm_rgb, int *rgb);
 void	color_normalizer(int *rgb, double *norm_rgb);
 int		encode_rgb(int *rgb);
+void	calculate(t_rtx *rtx);
 
 #endif
