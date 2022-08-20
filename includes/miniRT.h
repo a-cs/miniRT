@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/19 22:50:58 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/19 22:59:44 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 # define WINDOW_WIDTH 256
 # define WINDOW_HEIGHT 256
+
+# define ESC		0xff1b
 
 typedef struct s_maps
 {
