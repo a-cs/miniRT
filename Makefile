@@ -6,7 +6,7 @@
 #    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/08/19 22:51:23 by acarneir         ###   ########.fr        #
+#    Updated: 2022/08/22 23:48:10 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = $(SRC_DIR)/miniRT.c \
 		$(SRC_DIR)/calc.c \
 		$(SRC_DIR)/vectors/vector.c \
 		$(SRC_DIR)/vectors/vector_multiplications.c \
+		$(SRC_DIR)/rays/ray.c \
 		$(SRC_DIR)/utils/color.c
 
 INCLUDE_DIR = includes
@@ -44,6 +45,7 @@ $(NAME): $(LIBFT) $(MLX) $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/rays
 	@mkdir -p $(OBJ_DIR)/vectors
 	@mkdir -p $(OBJ_DIR)/utils
 	@$(CC) -c $(FLAGS) -I$(INCLUDE_DIR) -o $@ $<

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:36:14 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/20 03:21:08 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/22 23:44:38 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-int	encode_rgb(int *rgb)
+int	encode_rgb(t_vec3 color)
 {
-	return (rgb[0] << 16 | rgb[1] << 8 | rgb[2]);
+	return ((int)(color.x) << 16 | (int)(color.y) << 8 | (int)(color.z));
 }
 
 void	color_normalizer(int *rgb, double *norm_rgb)
@@ -24,10 +24,9 @@ void	color_normalizer(int *rgb, double *norm_rgb)
 	norm_rgb[2] = rgb[2] / 255.0;
 }
 
-void	color_unnormalizer(double *norm_rgb, int *rgb)
+void	color_unnormalizer(t_vec3 *norm_rgb, t_vec3 *rgb)
 {
-	rgb[0] = (int)(norm_rgb[0] * 255);
-	rgb[1] = (int)(norm_rgb[1] * 255);
-	rgb[2] = (int)(norm_rgb[2] * 255);
-	// printf("rgb: %d | %d | %d --- norm: %.4f | %.4f | %.4f\n", rgb[0], rgb[1], rgb[2], norm_rgb[0], norm_rgb[1], norm_rgb[2]);
+	rgb->x = (int)(norm_rgb->x * 255);
+	rgb->y = (int)(norm_rgb->y * 255);
+	rgb->z = (int)(norm_rgb->z * 255);
 }

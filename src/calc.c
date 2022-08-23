@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:59:13 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/19 22:52:59 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/23 00:58:59 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,47 @@
 
 void	calculate(t_rtx *rtx)
 {
-	int		x;
-	int		y;
-	int		*rgb;
-	double	*norm_rgb;
+	int		i;
+	int		j;
+	double	u;
+	double	v;
+	t_ray	ray;
+	t_vec3	pixel_color;
+	t_vec3	pixel_color2;
 
-	rgb = ft_calloc(3, sizeof(int));
-	norm_rgb = ft_calloc(3, sizeof(double));
-	norm_rgb[2] = 62 / 255.0;
-	y = WINDOW_HEIGHT - 1;
-	while (y >= 1)
+	j = WINDOW_HEIGHT - 1;
+	while (j >= 0)
 	{
-		norm_rgb[1] = y / 255.0;
-		x = 1;
-		while (x < WINDOW_WIDTH - 1)
+		i = 0;
+		while (i < WINDOW_WIDTH)
 		{
-			norm_rgb[0] = x / 255.0;
-			color_unnormalizer(norm_rgb, rgb);
-			rtx->maps.pixel_map[x][y] = encode_rgb(rgb);
-			x++;
+			u = (double)(i) / (double)(WINDOW_WIDTH - 1);
+			v = (double)(j) / (double)(WINDOW_HEIGHT - 1);
+			// printf("u = %f, v = %f\n", u, v);
+			ray = create_ray(rtx->origin, vector_add(rtx->lower_left_corner,
+						vector_add(vector_mul_scal(rtx->horizontal, u),
+							vector_sub(vector_mul_scal(rtx->vertical, v),
+								rtx->origin))));
+			// printf("[%d][%d] ray.d.x = %f, ray.d.y = %f, ray.d.z = %f\n", i,j, ray.direction.x, ray.direction.y, ray.direction.z);
+			pixel_color = ray_color(ray);
+			// printf("p1.x = %f, p1.y = %f, p1.z = %f\n", pixel_color.x, pixel_color.y, pixel_color.z);
+			color_unnormalizer(&pixel_color, &pixel_color2);
+			// printf("p2.x = %f, p2.y = %f, p2.z = %f\n", pixel_color2.x, pixel_color2.y, pixel_color2.z);
+			rtx->maps.pixel_map[i][j] = encode_rgb(pixel_color2);
+			i++;
 		}
-		y--;
+		j--;
 	}
-	free(rgb);
-	free(norm_rgb);
+	
+	// j = WINDOW_HEIGHT - 1;
+	// while (j >= 0)
+	// {
+	// 	i = 0;
+	// 	while (i < WINDOW_WIDTH - 1)
+	// 	{
+	// 		printf("[%d][%d] =  %X\n", i, j, rtx->maps.pixel_map[i][j]);
+	// 		i++;
+	// 	}
+	// 	j--;
+	// }
 }
