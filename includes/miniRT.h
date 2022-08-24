@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/23 00:06:41 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/24 02:38:48 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 450
+# define FALSE 0
+# define TRUE 1
 
 # define ESC		0xff1b
 
@@ -79,5 +81,6 @@ void	calculate(t_rtx *rtx);
 t_ray	create_ray(t_vec3 origin, t_vec3 direction);
 t_vec3	ray_at(t_ray ray, double t);
 t_vec3	ray_color(t_ray ray);
+double	hit_sphere(t_vec3 center, double radius, t_ray ray);
 
 #endif
