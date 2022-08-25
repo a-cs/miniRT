@@ -6,27 +6,39 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 02:25:46 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/24 02:56:49 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/24 05:11:12 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-double	hit_sphere(t_vec3 center, double radius, t_ray ray)
+int	hit_sphere(t_sphere *sp, t_ray ray, double *t, t_hit_record *rec)
 {
 	t_vec3	orig_to_center;
 	double	a;
-	double	b;
+	double	half_b;
 	double	c;
 	double	discriminant;
+	double	root;
 
-	orig_to_center = vector_sub(ray.origin, center);
-	a = vector_dot(ray.direction, ray.direction);
-	b = 2.0 * vector_dot(orig_to_center, ray.direction);
-	c = vector_dot(orig_to_center, orig_to_center) - (radius * radius);
-	discriminant = (b * b) - (4 * a * c);
+	orig_to_center = vector_sub(ray.origin, sp->center);
+	a = vector_length(ray.direction) * vector_length(ray.direction);
+	half_b = vector_dot(orig_to_center, ray.direction);
+	c = (vector_length(orig_to_center) * vector_length(orig_to_center))
+		- (sp->radius * sp->radius);
+	discriminant = (half_b * half_b) - (a * c);
 	if (discriminant < 0.0)
-		return (-1.0);
-	else
-		return ((-b - sqrt(discriminant)) / (2.0 * a));
+		return (FALSE);
+	root = (-half_b - sqrt(discriminant)) / a;
+	if (root < t[T_MIN] || t[T_MAX] < root)
+	{
+		root = (-half_b + sqrt(discriminant)) / a;
+		if (root < t[T_MIN] || t[T_MAX] < root)
+			return (FALSE);
+	}
+	rec->t = root;
+	rec->point = ray_at(ray, root);
+	rec->norm = vector_div(vector_sub(rec->point, sp->center), sp->radius);
+	set_face_normal(ray, rec);
+	return (TRUE);
 }

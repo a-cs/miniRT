@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:59:13 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/23 00:58:59 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/24 04:12:22 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	calculate(t_rtx *rtx)
 							vector_sub(vector_mul_scal(rtx->vertical, v),
 								rtx->origin))));
 			// printf("[%d][%d] ray.d.x = %f, ray.d.y = %f, ray.d.z = %f\n", i,j, ray.direction.x, ray.direction.y, ray.direction.z);
-			pixel_color = ray_color(ray);
+			pixel_color = ray_color(rtx, ray);
 			// printf("p1.x = %f, p1.y = %f, p1.z = %f\n", pixel_color.x, pixel_color.y, pixel_color.z);
 			color_unnormalizer(&pixel_color, &pixel_color2);
 			// printf("p2.x = %f, p2.y = %f, p2.z = %f\n", pixel_color2.x, pixel_color2.y, pixel_color2.z);

@@ -6,7 +6,7 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/08/24 02:39:15 by rfelipe-         ###   ########.fr        #
+#    Updated: 2022/08/24 04:06:03 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ SRC = $(SRC_DIR)/miniRT.c \
 		$(SRC_DIR)/vectors/vector_multiplications.c \
 		$(SRC_DIR)/rays/hit.c \
 		$(SRC_DIR)/rays/ray.c \
-		$(SRC_DIR)/utils/color.c
+		$(SRC_DIR)/utils/color.c \
+		$(SRC_DIR)/utils/initiate.c
 
 INCLUDE_DIR = includes
 INCLUDE = $(INCLUDE_DIR)/miniRT.h

@@ -3,41 +3,91 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:32:22 by acarneir          #+#    #+#             */
-/*   Updated: 2022/08/24 02:49:47 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/24 22:46:47 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-t_vec3	ray_color(t_ray ray)
+static int	iter_world(t_list *world, t_hit_record *rec, t_ray ray)
 {
-	t_vec3	color;
-	t_vec3	unit_direction;
-	t_vec3	norm;
-	double	t;
+	t_hit_record	temp_rec;
+	int				hit_anything;
+	double			t[2];
+	t_sphere		*sp;
 
-	t = hit_sphere(create_vector(0.0, 0.0, -1.0), 0.5, ray);
-	if (t > 0.0)
+	hit_anything = FALSE;
+	t[T_MIN] = 0.0;
+	t[T_MAX] = MAX;
+	// sp.center = create_vector(0.0, 0.0, -1.0);
+	// sp.radius = 0.5;
+	while (world)
 	{
-		norm = unit_vector(vector_sub(ray_at(ray, t),
-					create_vector(0.0, 0.0, -1.0)));
+		sp = world->content;
+		// printf("sp = [%f, %f, %f] r = %f\n", sp->center.x, sp->center.y, sp->center.z, sp->radius);
+		if (hit_sphere(sp, ray, t, &temp_rec))
+		{
+			hit_anything = TRUE;
+			t[T_MAX] = temp_rec.t;
+			rec->front_face = temp_rec.front_face;
+			rec->norm = temp_rec.norm;
+			rec->point = temp_rec.point;
+			rec->t = temp_rec.t;
+		}
+		world = world->next;
+	}
+	return (hit_anything);
+}
+
+void	set_face_normal(t_ray ray, t_hit_record *rec)
+{
+	if (vector_dot(ray.direction, rec->norm) < 0.0)
+		rec->front_face = TRUE;
+	else
+	{
+		rec->front_face = FALSE;
+		rec->norm = vector_mul_scal(rec->norm, -1.0);
+	}
+}
+
+t_vec3	ray_color(t_rtx *rtx, t_ray ray)
+{
+	t_vec3			color;
+	t_vec3			unit_direction;
+	t_hit_record	rec;
+	double			t;
+	// double			t2[2];
+
+	// t2[T_MIN] = 0;
+	// t2[T_MAX] = MAX;
+	// t = hit_sphere(rtx->world->content, ray, t2, &rec);
+	// if (t > 0.0)
+	// {
+	// 	rec.norm = unit_vector(vector_sub(ray_at(ray, t),
+	// 				create_vector(0.0, 0.0, -1.0)));
+	// 	return (vector_mul_scal(
+	// 			create_vector(rec.norm.x + 1, rec.norm.y + 1, rec.norm.z + 1), 0.5));
+	// }
+	if (iter_world(rtx->world, &rec, ray))
+	{
 		return (vector_mul_scal(
-				create_vector(norm.x + 1, norm.y + 1, norm.z + 1), 0.5));
+				create_vector(rec.norm.x + 1, rec.norm.y + 1, rec.norm.z + 1),
+				0.5));
 	}
 	unit_direction = unit_vector(ray.direction);
 	t = 0.5 * (unit_direction.y + 1.0);
 	color = vector_add((vector_mul_scal(
-					create_vector(1.0, 1.0, 1.0), (1.0 - t))),
-			(vector_mul_scal(create_vector(0.5, 0.7, 1.0), t)));
+						   create_vector(1.0, 1.0, 1.0), (1.0 - t))),
+					   (vector_mul_scal(create_vector(0.5, 0.7, 1.0), t)));
 	return (color);
 }
 
 t_vec3	ray_at(t_ray ray, double t)
 {
-	t_vec3	point;
+	t_vec3 point;
 
 	point = vector_add(ray.origin, vector_mul_scal(ray.direction, t));
 	return (point);
@@ -45,7 +95,7 @@ t_vec3	ray_at(t_ray ray, double t)
 
 t_ray	create_ray(t_vec3 origin, t_vec3 direction)
 {
-	t_ray	ray;
+	t_ray ray;
 
 	ray.origin = origin;
 	ray.direction = direction;

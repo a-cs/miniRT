@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/24 02:38:48 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/24 04:47:46 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 # define WINDOW_HEIGHT 450
 # define FALSE 0
 # define TRUE 1
+# define T_MIN 0
+# define T_MAX 1
+# define MAX 2147483647.0
 
 # define ESC		0xff1b
 
@@ -45,6 +48,14 @@ typedef struct s_vec3
 	double	z;
 }	t_vec3;
 
+typedef struct s_hit_record
+{
+	t_vec3	point;
+	t_vec3	norm;
+	double	t;
+	int		front_face;
+}	t_hit_record;
+
 typedef struct s_ray
 {
 	t_vec3	origin;
@@ -62,7 +73,14 @@ typedef struct s_rtx
 	t_vec3	horizontal;
 	t_vec3	vertical;
 	t_vec3	lower_left_corner;
+	t_list	*world;
 }	t_rtx;
+
+typedef struct s_sphere
+{
+	t_vec3	center;
+	double	radius;
+}	t_sphere;
 
 t_vec3	create_vector(double x, double y, double z);
 t_vec3	vector_add(t_vec3 a, t_vec3 b);
@@ -80,7 +98,10 @@ int		encode_rgb(t_vec3 color);
 void	calculate(t_rtx *rtx);
 t_ray	create_ray(t_vec3 origin, t_vec3 direction);
 t_vec3	ray_at(t_ray ray, double t);
-t_vec3	ray_color(t_ray ray);
-double	hit_sphere(t_vec3 center, double radius, t_ray ray);
+t_vec3	ray_color(t_rtx *rtx, t_ray ray);
+int		hit_sphere(t_sphere *sp, t_ray ray, double *t, t_hit_record *rec);
+void	set_face_normal(t_ray ray, t_hit_record *rec);
+int		render(t_rtx *rtx);
+void	initiate_rtx(t_rtx *rtx);
 
 #endif
