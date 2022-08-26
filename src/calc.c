@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:59:13 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/24 04:12:22 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/25 20:58:36 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ void	calculate(t_rtx *rtx)
 		i = 0;
 		while (i < WINDOW_WIDTH)
 		{
-			u = (double)(i) / (double)(WINDOW_WIDTH - 1);
-			v = (double)(j) / (double)(WINDOW_HEIGHT - 1);
+			u = (double)(i) / (double)(WINDOW_WIDTH - 1.0);
+			v = (double)(j) / (double)(WINDOW_HEIGHT - 1.0);
 			// printf("u = %f, v = %f\n", u, v);
 			ray = create_ray(rtx->origin, vector_add(rtx->lower_left_corner,
 						vector_add(vector_mul_scal(rtx->horizontal, u),
