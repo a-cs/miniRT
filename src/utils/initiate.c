@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 04:05:02 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/25 21:05:06 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/25 22:13:02 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,19 @@ static void	populate_list(t_rtx *rtx)
 	ft_lstadd_back(&rtx->world, ft_lstnew((void *)sp4));
 }
 
+double	degree_to_radian(double degree)
+{
+	return (degree * M_PI / 180);
+}
+
 void	initiate_rtx(t_rtx *rtx)
 {
-	rtx->viewport_height = 2;
+	double	fov;
+	double	theta;
+
+	fov = 120;
+	theta = degree_to_radian(fov);
+	rtx->viewport_height = 2 * tan(theta / 2);
 	rtx->viewport_width = (16.0 / 9.0) * rtx->viewport_height;
 	rtx->focal_length = 1.0;
 	rtx->origin = create_vector(0, 0, 0);

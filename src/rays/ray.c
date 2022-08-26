@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:32:22 by acarneir          #+#    #+#             */
-/*   Updated: 2022/08/25 21:19:05 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/25 22:02:29 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	iter_world(t_list *world, t_hit_record *rec, t_ray ray)
 
 	hit_anything = FALSE;
 	t[T_MIN] = 0.0;
-	t[T_MAX] = MAX;
+	t[T_MAX] = INFINITY;
 	while (world)
 	{
 		sp = world->content;
