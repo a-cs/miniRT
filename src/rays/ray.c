@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:32:22 by acarneir          #+#    #+#             */
-/*   Updated: 2022/08/25 22:02:29 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/27 04:02:07 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,35 +50,35 @@ void	set_face_normal(t_ray ray, t_hit_record *rec)
 	}
 }
 
-t_vec3	ray_color(t_rtx *rtx, t_ray ray)
+t_color	ray_color(t_rtx *rtx, t_ray ray)
 {
-	t_vec3			color;
-	t_vec3			unit_direction;
+	t_color			color;
+	t_vec			unit_direction;
 	t_hit_record	rec;
 	double			t;
 
 	if (iter_world(rtx->world, &rec, ray))
 	{
-		return (vector_mul_scal(create_vector(rec.norm.x + 1.0,
-					rec.norm.y + 1.0, rec.norm.z + 1.0), 0.5));
+		return (vector_to_color(vector_mul_scal(create_vector(rec.norm.x + 1.0,
+						rec.norm.y + 1.0, rec.norm.z + 1.0, rec.norm.w), 0.5)));
 	}
 	unit_direction = unit_vector(ray.direction);
 	t = 0.5 * (unit_direction.y + 1.0);
-	color = vector_add((vector_mul_scal(
-					create_vector(1.0, 1.0, 1.0), (1.0 - t))),
-			(vector_mul_scal(create_vector(0.5, 0.7, 1.0), t)));
+	color = vector_to_color(vector_add((vector_mul_scal(
+						create_vector(1.0, 1.0, 1.0, 0.0), (1.0 - t))),
+				(vector_mul_scal(create_vector(0.5, 0.7, 1.0, 0.0), t))));
 	return (color);
 }
 
-t_vec3	ray_at(t_ray ray, double t)
+t_vec	ray_at(t_ray ray, double t)
 {
-	t_vec3	point;
+	t_vec	point;
 
 	point = vector_add(ray.origin, vector_mul_scal(ray.direction, t));
 	return (point);
 }
 
-t_ray	create_ray(t_vec3 origin, t_vec3 direction)
+t_ray	create_ray(t_vec origin, t_vec direction)
 {
 	t_ray	ray;
 

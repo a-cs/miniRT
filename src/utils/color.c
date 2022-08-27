@@ -6,15 +6,24 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:36:14 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/24 04:04:36 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/27 04:00:56 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-int	encode_rgb(t_vec3 color)
+t_color	vector_to_color(t_vec vec)
 {
-	return ((int)(color.x) << 16 | (int)(color.y) << 8 | (int)(color.z));
+	t_color	color;
+
+	color.r = vec.x;
+	color.g = vec.y;
+	color.b = vec.z;
+	return (color);
+}
+int	encode_rgb(t_color color)
+{
+	return ((int)(color.r) << 16 | (int)(color.g) << 8 | (int)(color.b));
 }
 
 void	color_normalizer(int *rgb, double *norm_rgb)
@@ -24,17 +33,17 @@ void	color_normalizer(int *rgb, double *norm_rgb)
 	norm_rgb[2] = rgb[2] / 255.0;
 }
 
-void	color_unnormalizer(t_vec3 *norm_rgb, t_vec3 *rgb)
+void	color_unnormalizer(t_color *norm_rgb, t_color *rgb)
 {
-	rgb->x = (int)(norm_rgb->x * 255);
-	rgb->y = (int)(norm_rgb->y * 255);
-	rgb->z = (int)(norm_rgb->z * 255);
+	rgb->r = (int)(norm_rgb->r * 255);
+	rgb->g = (int)(norm_rgb->g * 255);
+	rgb->b = (int)(norm_rgb->b * 255);
 }
 
 int	render(t_rtx *rtx)
 {
-	int		x;
-	int		y;
+	int	x;
+	int	y;
 
 	y = WINDOW_HEIGHT - 1;
 	while (y >= 1)

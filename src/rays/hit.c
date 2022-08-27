@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 02:25:46 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/24 05:11:12 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/27 03:29:43 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	hit_sphere(t_sphere *sp, t_ray ray, double *t, t_hit_record *rec)
 {
-	t_vec3	orig_to_center;
+	t_vec	orig_to_center;
 	double	a;
 	double	half_b;
 	double	c;

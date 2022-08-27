@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calc.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:59:13 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/25 20:58:36 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/08/27 03:53:11 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	calculate(t_rtx *rtx)
 	double	u;
 	double	v;
 	t_ray	ray;
-	t_vec3	pixel_color;
-	t_vec3	pixel_color2;
+	t_color	pixel_color;
+	t_color	pixel_color2;
 
 	j = WINDOW_HEIGHT - 1;
 	while (j >= 0)
