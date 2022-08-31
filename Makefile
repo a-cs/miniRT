@@ -6,7 +6,7 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/08/24 04:06:03 by rfelipe-         ###   ########.fr        #
+#    Updated: 2022/08/31 04:07:13 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ SRC = $(SRC_DIR)/miniRT.c \
 		$(SRC_DIR)/rays/hit.c \
 		$(SRC_DIR)/rays/ray.c \
 		$(SRC_DIR)/utils/color.c \
-		$(SRC_DIR)/utils/initiate.c
+		$(SRC_DIR)/utils/initiate.c \
+		$(SRC_DIR)/matrix/matrix_operations.c \
+		$(SRC_DIR)/matrix/matrix.c
 
 INCLUDE_DIR = includes
 INCLUDE = $(INCLUDE_DIR)/miniRT.h
@@ -50,6 +52,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)
 	@mkdir -p $(OBJ_DIR)/rays
 	@mkdir -p $(OBJ_DIR)/vectors
 	@mkdir -p $(OBJ_DIR)/utils
+	@mkdir -p $(OBJ_DIR)/matrix
 	@$(CC) -c $(FLAGS) -I$(INCLUDE_DIR) -o $@ $<
 
 $(LIBFT):
@@ -74,7 +77,7 @@ fclean: clean
 re: fclean all
 
 valgrind: all
-	@$(VALGRIND)
+	@clear && $(VALGRIND)
 
 v: valgrind
 

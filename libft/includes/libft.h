@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 20:36:32 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/17 04:37:46 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/31 04:00:18 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ char	*ft_substr(char *s, unsigned int start, size_t len);
 char	**ft_lst_to_matrix(t_list *lst);
 char	**ft_split(char *s, char c);
 void	ft_bzero(void *s, size_t n);
-void	ft_free_matrix(char **matrix);
+void	ft_free_char_matrix(char **matrix);
+void	ft_free_double_matrix(double **matrix, int size);
 void	ft_free_ptr(void **ptr);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 void	ft_lstadd_front(t_list **lst, t_list *new);
