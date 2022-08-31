@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 02:58:20 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/31 03:40:13 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/31 04:21:46 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,27 @@ double	**matrix_multiply(double **a, double **b, int size)
 				m[row][col] += a[row][x] * b[x][col];
 				x++;
 			}
+			col++;
+		}
+		row++;
+	}
+	return (m);
+}
+
+double	**matrix_transpose(double **a, int size)
+{
+	int		row;
+	int		col;
+	double	**m;
+
+	m = create_matrix(size);
+	row = 0;
+	while (row < size)
+	{
+		col = 0;
+		while (col < size)
+		{
+			m[row][col] = a[col][row];
 			col++;
 		}
 		row++;

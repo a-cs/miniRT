@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/31 03:39:05 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/08/31 04:22:11 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,7 @@ void	initiate_rtx(t_rtx *rtx);
 t_color	vector_to_color(t_vec vec);
 double	**matrix_multiply(double **a, double **b, int size);
 double	**create_matrix(int size);
+double	**identity_matrix(int size);
+double	**matrix_transpose(double **a, int size);
 
 #endif
