@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/31 04:22:11 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:02:09 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,8 @@ double	**matrix_multiply(double **a, double **b, int size);
 double	**create_matrix(int size);
 double	**identity_matrix(int size);
 double	**matrix_transpose(double **a, int size);
+double	matrix_det(double **m, int size);
+double	cofactor(double **m, int size, int row, int col);
+
 
 #endif

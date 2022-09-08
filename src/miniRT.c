@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:06:00 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/31 04:26:00 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/07 20:52:31 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,52 +36,39 @@ int	main(void)
 	// t_rtx	rtx;
 
 	double	**a;
-	double	**b;
-	double	**m;
+	// double	**b;
+	// double	**m;
 	int		size = 4;
 	a = create_matrix(size);
-	b = create_matrix(size);
-
-	a[0][0] = 0.0;
-	a[0][1] = 9.0;
-	a[0][2] = 3.0;
-	a[0][3] = 0.0;
-	a[1][0] = 9.0;
-	a[1][1] = 8.0;
-	a[1][2] = 0.0;
-	a[1][3] = 8.0;
-	a[2][0] = 1.0;
-	a[2][1] = 8.0;
-	a[2][2] = 5.0;
-	a[2][3] = 3.0;
-	a[3][0] = 0.0;
-	a[3][1] = 0.0;
-	a[3][2] = 5.0;
-	a[3][3] = 8.0;
-	b[0][0] = 0.0;
-	b[0][1] = 1.0;
-	b[0][2] = 2.0;
-	b[0][3] = 4.0;
-	b[1][0] = 1.0;
-	b[1][1] = 2.0;
-	b[1][2] = 4.0;
-	b[1][3] = 8.0;
-	b[2][0] = 2.0;
-	b[2][1] = 4.0;
-	b[2][2] = 8.0;
-	b[2][3] = 16.0;
-	b[3][0] = 4.0;
-	b[3][1] = 8.0;
-	b[3][2] = 16.0;
-	b[3][3] = 32.0;
-	// m = matrix_multiply(a, b, 4);
-	m = matrix_transpose(a, size);
+	// b = create_matrix(size);
+	a[0][0] = -2;
+	a[0][1] = -8;
+	a[0][2] = 3;
+	a[0][3] = 5;
+	a[1][0] = -3;
+	a[1][1] = 1;
+	a[1][2] = 7;
+	a[1][3] = 3;
+	a[2][0] = 1;
+	a[2][1] = 2;
+	a[2][2] = -9;
+	a[2][3] = 6;
+	a[3][0] = -6;
+	a[3][1] = 7;
+	a[3][2] = 7;
+	a[3][3] = -9;
+	printf("a = \n");
 	for (int i = 0; i < size; i++)
 	{
 		for (int j = 0; j < size; j++)
-			printf ("[%.2f] ", m[i][j]);
+			printf ("[%.2f] ", a[i][j]);
 		printf("\n");
 	}
+	printf ("cof[0][0] = %.2f\n", cofactor(a, size, 0, 0));
+	printf ("cof[0][1] = %.2f\n", cofactor(a, size, 0, 1));
+	printf ("cof[0][2] = %.2f\n", cofactor(a, size, 0, 2));
+	printf ("cof[0][3] = %.2f\n", cofactor(a, size, 0, 3));
+	printf ("det a = %.2f\n", matrix_det(a, size));
 	// initiate_rtx(&rtx);
 	// calculate(&rtx);
 	// rtx.mlx.ptr = mlx_init();
@@ -94,7 +81,7 @@ int	main(void)
 	// mlx_loop_hook(rtx.mlx.ptr, &render, &rtx);
 	// mlx_loop(rtx.mlx.ptr);
 	ft_free_double_matrix(a, size);
-	ft_free_double_matrix(b, size);
-	ft_free_double_matrix(m, size);
+	// ft_free_double_matrix(b, size);
+	// ft_free_double_matrix(m, size);
 	return (0);
 }

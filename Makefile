@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/08/31 04:07:13 by rfelipe-         ###   ########.fr        #
+#    Updated: 2022/09/07 20:55:15 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ SRC = $(SRC_DIR)/miniRT.c \
 		$(SRC_DIR)/rays/ray.c \
 		$(SRC_DIR)/utils/color.c \
 		$(SRC_DIR)/utils/initiate.c \
+		$(SRC_DIR)/matrix/matrix_determinant.c \
 		$(SRC_DIR)/matrix/matrix_operations.c \
 		$(SRC_DIR)/matrix/matrix.c
 
