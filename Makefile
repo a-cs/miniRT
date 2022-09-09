@@ -6,7 +6,7 @@
 #    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/09/07 20:55:15 by acarneir         ###   ########.fr        #
+#    Updated: 2022/09/08 22:09:06 by acarneir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = $(SRC_DIR)/miniRT.c \
 		$(SRC_DIR)/utils/initiate.c \
 		$(SRC_DIR)/matrix/matrix_determinant.c \
 		$(SRC_DIR)/matrix/matrix_operations.c \
+		$(SRC_DIR)/matrix/matrix_transformations.c \
 		$(SRC_DIR)/matrix/matrix.c
 
 INCLUDE_DIR = includes
