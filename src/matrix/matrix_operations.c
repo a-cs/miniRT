@@ -6,13 +6,13 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 02:58:20 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/07 20:57:33 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:07:20 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-double	**matrix_multiply(double **a, double **b, int size)
+double	**m_multiply(double **a, double **b, int size)
 {
 	int		row;
 	int		col;
@@ -39,7 +39,7 @@ double	**matrix_multiply(double **a, double **b, int size)
 	return (m);
 }
 
-double	**matrix_transpose(double **a, int size)
+double	**m_transpose(double **a, int size)
 {
 	int		row;
 	int		col;

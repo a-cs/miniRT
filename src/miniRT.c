@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:06:00 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/07 20:52:31 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:04:18 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	main(void)
 	printf ("cof[0][1] = %.2f\n", cofactor(a, size, 0, 1));
 	printf ("cof[0][2] = %.2f\n", cofactor(a, size, 0, 2));
 	printf ("cof[0][3] = %.2f\n", cofactor(a, size, 0, 3));
-	printf ("det a = %.2f\n", matrix_det(a, size));
+	printf ("det a = %.2f\n", m_det(a, size));
 	// initiate_rtx(&rtx);
 	// calculate(&rtx);
 	// rtx.mlx.ptr = mlx_init();

@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 02:58:20 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/07 20:54:38 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:07:13 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ double	cofactor(double **m, int size, int row, int col)
 	double	cofactor;
 
 	sub_m = sub_matrix(m, size, row, col);
-	cofactor = pow(-1.0, (row + 1 + col + 1)) * matrix_det(sub_m, size - 1);
+	cofactor = pow(-1.0, (row + 1 + col + 1)) * m_det(sub_m, size - 1);
 	ft_free_double_matrix(sub_m, size - 1);
 	return (cofactor);
 }
 
-double	matrix_det(double **m, int size)
+double	m_det(double **m, int size)
 {
 	double	det;
 	int		col;

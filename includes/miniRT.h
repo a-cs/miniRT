@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/07 20:02:09 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:04:18 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ void	set_face_normal(t_ray ray, t_hit_record *rec);
 int		render(t_rtx *rtx);
 void	initiate_rtx(t_rtx *rtx);
 t_color	vector_to_color(t_vec vec);
-double	**matrix_multiply(double **a, double **b, int size);
+double	**m_multiply(double **a, double **b, int size);
 double	**create_matrix(int size);
 double	**identity_matrix(int size);
-double	**matrix_transpose(double **a, int size);
-double	matrix_det(double **m, int size);
+double	**m_transpose(double **a, int size);
+double	m_det(double **m, int size);
 double	cofactor(double **m, int size, int row, int col);
 
 
