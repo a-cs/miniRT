@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 22:00:50 by acarneir          #+#    #+#             */
-/*   Updated: 2022/09/08 22:08:12 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 22:17:38 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,16 @@ double	**m_translation(double x, double y, double z)
 	m[0][3] = x;
 	m[1][3] = y;
 	m[2][3] = z;
+	return (m);
+}
+
+double	**m_scaling(double x, double y, double z)
+{
+	double	**m;
+
+	m = identity_matrix(4);
+	m[0][0] = x;
+	m[1][1] = y;
+	m[2][2] = z;
 	return (m);
 }

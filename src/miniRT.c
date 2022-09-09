@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:06:00 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/08 22:12:41 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 22:23:16 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(void)
 	// a[3][1] = 3;
 	// a[3][2] = 2;
 	// a[3][3] = 1;
-	a = m_translation(5, -3, 2);
+	a = m_scaling(-1, 1, 1);
 	printf("a = \n");
 	for (int i = 0; i < size; i++)
 	{
@@ -67,7 +67,7 @@ int	main(void)
 		printf("\n");
 	}
 	printf ("det a = %.2f\n", m_det(a, size));
-	v = create_vector(-3, 4, 5, 0);
+	v = create_vector(2, 3, 4, 1);
 	printf("v1 = {%.2f, %.2f, %.2f, %.2f}\n", v.x, v.y, v.z, v.w);
 	v = multiply_m_v(a, v);
 	printf("v2 = {%.2f, %.2f, %.2f, %.2f}\n", v.x, v.y, v.z, v.w);
