@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/08 22:18:18 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 23:07:49 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,5 +120,8 @@ double	**m_inverse(double **m, int size);
 t_vec	multiply_m_v(double **m, t_vec v);
 double	**m_translation(double x, double y, double z);
 double	**m_scaling(double x, double y, double z);
+double	**m_rotate_x(double n_angle);
+double	**m_rotate_y(double n_angle);
+double	**m_rotate_z(double n_angle);
 
 #endif
