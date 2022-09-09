@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 02:58:20 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/08 21:07:20 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:18:31 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,29 @@ double	**m_transpose(double **a, int size)
 		row++;
 	}
 	return (m);
+}
+
+double	**m_inverse(double **m, int size)
+{
+	int		row;
+	int		col;
+	double	det;
+	double	**inv;
+
+	det = m_det(m, size);
+	if (det == 0)
+		return (NULL);
+	inv = create_matrix(size);
+	row = 0;
+	while (row < size)
+	{
+		col = 0;
+		while (col < size)
+		{
+			inv[col][row] = cofactor(m, size, row, col) / det;
+			col++;
+		}
+		row++;
+	}
+	return (inv);
 }

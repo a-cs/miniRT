@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:06:00 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/08 21:04:18 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:24:31 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,27 @@ int	main(void)
 	// t_rtx	rtx;
 
 	double	**a;
-	// double	**b;
-	// double	**m;
+	double	**b;
+	double	**m;
 	int		size = 4;
 	a = create_matrix(size);
 	// b = create_matrix(size);
-	a[0][0] = -2;
-	a[0][1] = -8;
-	a[0][2] = 3;
-	a[0][3] = 5;
-	a[1][0] = -3;
-	a[1][1] = 1;
-	a[1][2] = 7;
-	a[1][3] = 3;
-	a[2][0] = 1;
-	a[2][1] = 2;
-	a[2][2] = -9;
-	a[2][3] = 6;
-	a[3][0] = -6;
-	a[3][1] = 7;
+	a[0][0] = -5;
+	a[0][1] = 2;
+	a[0][2] = 6;
+	a[0][3] = -8;
+	a[1][0] = 1;
+	a[1][1] = -5;
+	a[1][2] = 1;
+	a[1][3] = 8;
+	a[2][0] = 7;
+	a[2][1] = 7;
+	a[2][2] = -6;
+	a[2][3] = -7;
+	a[3][0] = 1;
+	a[3][1] = -3;
 	a[3][2] = 7;
-	a[3][3] = -9;
+	a[3][3] = 4;
 	printf("a = \n");
 	for (int i = 0; i < size; i++)
 	{
@@ -64,11 +64,22 @@ int	main(void)
 			printf ("[%.2f] ", a[i][j]);
 		printf("\n");
 	}
-	printf ("cof[0][0] = %.2f\n", cofactor(a, size, 0, 0));
-	printf ("cof[0][1] = %.2f\n", cofactor(a, size, 0, 1));
-	printf ("cof[0][2] = %.2f\n", cofactor(a, size, 0, 2));
-	printf ("cof[0][3] = %.2f\n", cofactor(a, size, 0, 3));
 	printf ("det a = %.2f\n", m_det(a, size));
+
+	m = m_inverse(a, size);
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+			printf ("[%.5f] ", m[i][j]);
+		printf("\n");
+	}
+	b = m_multiply(m, a, size);
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+			printf ("[%.5f] ", b[i][j]);
+		printf("\n");
+	}
 	// initiate_rtx(&rtx);
 	// calculate(&rtx);
 	// rtx.mlx.ptr = mlx_init();
@@ -81,7 +92,7 @@ int	main(void)
 	// mlx_loop_hook(rtx.mlx.ptr, &render, &rtx);
 	// mlx_loop(rtx.mlx.ptr);
 	ft_free_double_matrix(a, size);
-	// ft_free_double_matrix(b, size);
-	// ft_free_double_matrix(m, size);
+	ft_free_double_matrix(b, size);
+	ft_free_double_matrix(m, size);
 	return (0);
 }

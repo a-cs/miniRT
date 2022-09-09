@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/08 21:04:18 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/08 21:21:09 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,6 @@ double	**identity_matrix(int size);
 double	**m_transpose(double **a, int size);
 double	m_det(double **m, int size);
 double	cofactor(double **m, int size, int row, int col);
-
+double	**m_inverse(double **m, int size);
 
 #endif
