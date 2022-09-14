@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   matrix_transformations.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 22:00:50 by acarneir          #+#    #+#             */
-/*   Updated: 2022/09/08 23:07:30 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/14 03:44:37 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

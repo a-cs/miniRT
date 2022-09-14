@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 04:05:02 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/14 02:15:05 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/14 04:32:06 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 static void	populate_list(t_rtx *rtx)
 {
 	t_sphere	*sp;
+	double		center[3];
 
-	sp = (t_sphere *)malloc(sizeof(t_sphere));
-	sp->center = create_vector(0.0, 0.0, -1.0, 1.0);
-	sp->radius = 0.5;
+	center[0] = 0;
+	center[1] = 0;
+	center[2] = -1;
+	sp = crete_sphere(center, 0.5);
 	rtx->world = NULL;
 	ft_lstadd_back(&rtx->world, ft_lstnew((void *)sp));
 }

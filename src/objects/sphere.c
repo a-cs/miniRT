@@ -1,0 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sphere.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/09/14 03:48:11 by rfelipe-          #+#    #+#             */
+/*   Updated: 2022/09/14 04:28:46 by rfelipe-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../includes/miniRT.h"
+
+t_sphere	*crete_sphere(double center[3], double radius)
+{
+	t_sphere	*sp;
+	double		**translation;
+	double		**scaling;
+
+	sp = (t_sphere *)malloc(sizeof(t_sphere));
+	sp->center = create_vector(0, 0, 0, 1);
+	sp->radius = 1;
+	translation = m_translation(center[0], center[1], center[2]);
+	scaling = m_scaling(radius, radius, radius);
+	sp->transform = m_multiply(translation, scaling, 4);
+	free(translation);
+	free(scaling);
+	return (sp);
+}

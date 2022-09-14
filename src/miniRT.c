@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:06:00 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/13 03:26:05 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/14 04:29:10 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 int	close_window(t_rtx *rtx)
 {
+	t_sphere	*sp;
+
 	mlx_destroy_window(rtx->mlx.ptr, rtx->mlx.window);
 	rtx->mlx.window = NULL;
 	ft_free_ptr((void *)&rtx->mlx.window);
 	mlx_destroy_display(rtx->mlx.ptr);
 	ft_free_ptr((void *)&rtx->mlx.ptr);
 	if (rtx->world)
+	{
+		sp = rtx->world->content;
+		free(sp->transform);
 		ft_lstclear(&rtx->world, free);
+	}
 	exit(0);
 }
 

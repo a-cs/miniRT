@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 02:25:46 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/27 03:29:43 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/14 04:11:41 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ int	hit_sphere(t_sphere *sp, t_ray ray, double *t, t_hit_record *rec)
 	double	c;
 	double	discriminant;
 	double	root;
+	double	**inverse;
 
+	inverse = m_inverse(sp->transform, 4);
+	ray.origin = multiply_m_v(inverse, ray.origin);
+	ray.direction = multiply_m_v(inverse, ray.direction);
+	ft_free_double_matrix(inverse, 4);
 	orig_to_center = vector_sub(ray.origin, sp->center);
 	a = vector_length(ray.direction) * vector_length(ray.direction);
 	half_b = vector_dot(orig_to_center, ray.direction);

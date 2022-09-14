@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+         #
+#    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/09/08 22:09:06 by acarneir         ###   ########.fr        #
+#    Updated: 2022/09/14 03:55:03 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = $(SRC_DIR)/miniRT.c \
 		$(SRC_DIR)/calc.c \
 		$(SRC_DIR)/vectors/vector.c \
 		$(SRC_DIR)/vectors/vector_multiplications.c \
+		$(SRC_DIR)/objects/sphere.c \
 		$(SRC_DIR)/rays/hit.c \
 		$(SRC_DIR)/rays/ray.c \
 		$(SRC_DIR)/utils/color.c \
@@ -51,6 +52,7 @@ $(NAME): $(LIBFT) $(MLX) $(OBJ)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCLUDE)
 	@mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)/objects
 	@mkdir -p $(OBJ_DIR)/rays
 	@mkdir -p $(OBJ_DIR)/vectors
 	@mkdir -p $(OBJ_DIR)/utils
