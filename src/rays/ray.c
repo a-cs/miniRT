@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:32:22 by acarneir          #+#    #+#             */
-/*   Updated: 2022/08/27 04:02:07 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/14 02:45:07 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,22 +52,11 @@ void	set_face_normal(t_ray ray, t_hit_record *rec)
 
 t_color	ray_color(t_rtx *rtx, t_ray ray)
 {
-	t_color			color;
-	t_vec			unit_direction;
 	t_hit_record	rec;
-	double			t;
 
 	if (iter_world(rtx->world, &rec, ray))
-	{
-		return (vector_to_color(vector_mul_scal(create_vector(rec.norm.x + 1.0,
-						rec.norm.y + 1.0, rec.norm.z + 1.0, rec.norm.w), 0.5)));
-	}
-	unit_direction = unit_vector(ray.direction);
-	t = 0.5 * (unit_direction.y + 1.0);
-	color = vector_to_color(vector_add((vector_mul_scal(
-						create_vector(1.0, 1.0, 1.0, 0.0), (1.0 - t))),
-				(vector_mul_scal(create_vector(0.5, 0.7, 1.0, 0.0), t))));
-	return (color);
+		return (vector_to_color(create_vector(1, 0, 0, 0)));
+	return (vector_to_color(create_vector(0, 0, 0, 0)));
 }
 
 t_vec	ray_at(t_ray ray, double t)

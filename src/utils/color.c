@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:36:14 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/08/27 04:00:56 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/14 02:18:18 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_color	vector_to_color(t_vec vec)
 	color.b = vec.z;
 	return (color);
 }
+
 int	encode_rgb(t_color color)
 {
 	return ((int)(color.r) << 16 | (int)(color.g) << 8 | (int)(color.b));
