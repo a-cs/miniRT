@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:36:14 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/14 02:18:18 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/15 03:50:30 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,15 @@ int	render(t_rtx *rtx)
 		y--;
 	}
 	return (0);
+}
+
+t_vec	color_to_vector(t_color color)
+{
+	t_vec	vec;
+
+	vec.x = color.r;
+	vec.y = color.g;
+	vec.z = color.b;
+	vec.w = 0;
+	return (vec);
 }

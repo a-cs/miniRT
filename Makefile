@@ -6,7 +6,7 @@
 #    By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/17 03:07:19 by rfelipe-          #+#    #+#              #
-#    Updated: 2022/09/14 03:55:03 by rfelipe-         ###   ########.fr        #
+#    Updated: 2022/09/15 04:04:21 by rfelipe-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC = $(SRC_DIR)/miniRT.c \
 		$(SRC_DIR)/rays/ray.c \
 		$(SRC_DIR)/utils/color.c \
 		$(SRC_DIR)/utils/initiate.c \
+		$(SRC_DIR)/utils/light.c \
 		$(SRC_DIR)/matrix/matrix_determinant.c \
 		$(SRC_DIR)/matrix/matrix_operations.c \
 		$(SRC_DIR)/matrix/matrix_transformations.c \

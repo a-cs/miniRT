@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 04:05:02 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/14 04:32:06 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/15 04:45:58 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ void	initiate_rtx(t_rtx *rtx)
 					vector_div(rtx->vertical, 2.0),
 					create_vector(0.0, 0.0, rtx->focal_length, 0.0))));
 	populate_list(rtx);
+	rtx->point_light.position = create_vector(-10, 10, 10, 1);
+	rtx->point_light.intensity = vector_to_color(create_vector(1, 1, 1, 1));
 	// printf("llc.x = %f, llc.y = %f, llc.z = %f\n", rtx->lower_left_corner.x, rtx->lower_left_corner.y, rtx->lower_left_corner.z);
 }

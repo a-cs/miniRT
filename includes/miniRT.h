@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/14 04:28:59 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/15 04:04:00 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@
 # define T_MAX 1
 # define ESC 0xff1b
 
+typedef struct s_vec
+{
+	double	x;
+	double	y;
+	double	z;
+	double	w;
+}	t_vec;
+
 typedef struct s_maps
 {
 	int	img_map[WINDOW_WIDTH][WINDOW_HEIGHT][3];
@@ -46,13 +54,14 @@ typedef struct s_color
 	double	b;
 }	t_color;
 
-typedef struct s_vec
+typedef struct s_material
 {
-	double	x;
-	double	y;
-	double	z;
-	double	w;
-}	t_vec;
+	t_color	color;
+	double	ambient;
+	double	diffuse;
+	double	specular;
+	double	shininess;
+}	t_material;
 
 typedef struct s_hit_record
 {
@@ -60,6 +69,7 @@ typedef struct s_hit_record
 	t_vec	norm;
 	double	t;
 	int		front_face;
+	t_color	color;
 }	t_hit_record;
 
 typedef struct s_ray
@@ -67,6 +77,12 @@ typedef struct s_ray
 	t_vec	origin;
 	t_vec	direction;
 }	t_ray;
+
+typedef struct s_light
+{
+	t_vec	position;
+	t_color	intensity;
+}	t_light;
 
 typedef struct s_rtx
 {
@@ -80,13 +96,15 @@ typedef struct s_rtx
 	t_vec	vertical;
 	t_vec	lower_left_corner;
 	t_list	*world;
+	t_light	point_light;
 }	t_rtx;
 
 typedef struct s_sphere
 {
-	t_vec	center;
-	double	radius;
-	double	**transform;
+	t_vec		center;
+	double		radius;
+	double		**transform;
+	t_material	material;
 }	t_sphere;
 
 t_vec		create_vector(double x, double y, double z, double w);
@@ -125,5 +143,9 @@ double		**m_rotate_x(double n_angle);
 double		**m_rotate_y(double n_angle);
 double		**m_rotate_z(double n_angle);
 t_sphere	*crete_sphere(double center[3], double radius);
+t_vec		normal_at(t_sphere *sp, t_vec point);
+t_vec		reflect(t_vec in, t_vec norm);
+t_vec		color_to_vector(t_color color);
+t_color		lighting(t_material m, t_rtx *rtx, t_vec point, t_vec norm);
 
 #endif

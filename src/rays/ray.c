@@ -6,19 +6,21 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:32:22 by acarneir          #+#    #+#             */
-/*   Updated: 2022/09/14 02:45:07 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/15 04:59:01 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
-static int	iter_world(t_list *world, t_hit_record *rec, t_ray ray)
+static int	iter_world(t_rtx *rtx, t_hit_record *rec, t_ray ray)
 {
 	t_hit_record	temp_rec;
 	int				hit_anything;
 	double			t[2];
 	t_sphere		*sp;
+	t_list			*world;
 
+	world = rtx->world;
 	hit_anything = FALSE;
 	t[T_MIN] = 0.0;
 	t[T_MAX] = INFINITY;
@@ -36,6 +38,7 @@ static int	iter_world(t_list *world, t_hit_record *rec, t_ray ray)
 		}
 		world = world->next;
 	}
+	rec->color = lighting(sp->material, rtx, rec->point, rec->norm);
 	return (hit_anything);
 }
 
@@ -54,8 +57,8 @@ t_color	ray_color(t_rtx *rtx, t_ray ray)
 {
 	t_hit_record	rec;
 
-	if (iter_world(rtx->world, &rec, ray))
-		return (vector_to_color(create_vector(1, 0, 0, 0)));
+	if (iter_world(rtx, &rec, ray))
+		return (rec.color);
 	return (vector_to_color(create_vector(0, 0, 0, 0)));
 }
 

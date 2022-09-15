@@ -6,7 +6,7 @@
 /*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 02:25:46 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/14 04:11:41 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/15 05:02:29 by rfelipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,26 @@ int	hit_sphere(t_sphere *sp, t_ray ray, double *t, t_hit_record *rec)
 	}
 	rec->t = root;
 	rec->point = ray_at(ray, root);
-	rec->norm = vector_div(vector_sub(rec->point, sp->center), sp->radius);
+	rec->norm = normal_at(sp, rec->point);
 	set_face_normal(ray, rec);
 	return (TRUE);
+}
+
+t_vec	normal_at(t_sphere *sp, t_vec point)
+{
+	t_vec	obj_point;
+	t_vec	obj_norm;
+	t_vec	world_norm;
+	double	**inverse;
+	double	**transpose;
+
+	inverse = m_inverse(sp->transform, 4);
+	obj_point = multiply_m_v(inverse, point);
+	obj_norm = vector_sub(obj_point, create_vector(0, 0, 0, 0));
+	transpose = m_transpose(inverse, 4);
+	world_norm = multiply_m_v(transpose, obj_norm);
+	world_norm.w = 0;
+	ft_free_double_matrix(inverse, 4);
+	ft_free_double_matrix(transpose, 4);
+	return (unit_vector(world_norm));
 }
