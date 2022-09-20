@@ -3,22 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/20 02:36:14 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/15 03:50:30 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/19 23:19:05 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/miniRT.h"
 
+double	clamp_color(double color)
+{
+	if (color > 1)
+		return (1);
+	if (color < 0)
+		return (0);
+	return (color);
+}
+
 t_color	vector_to_color(t_vec vec)
 {
 	t_color	color;
 
-	color.r = vec.x;
-	color.g = vec.y;
-	color.b = vec.z;
+	color.r = clamp_color(vec.x);
+	color.g = clamp_color(vec.y);
+	color.b = clamp_color(vec.z);
+
+	// color.r = vec.x;
+	// color.g = vec.y;
+	// color.b = vec.z;
 	return (color);
 }
 

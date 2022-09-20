@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/15 04:04:00 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/19 22:47:41 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ typedef struct s_hit_record
 {
 	t_vec	point;
 	t_vec	norm;
+	t_vec	eye;
 	double	t;
 	int		front_face;
 	t_color	color;
@@ -146,6 +147,6 @@ t_sphere	*crete_sphere(double center[3], double radius);
 t_vec		normal_at(t_sphere *sp, t_vec point);
 t_vec		reflect(t_vec in, t_vec norm);
 t_vec		color_to_vector(t_color color);
-t_color		lighting(t_material m, t_rtx *rtx, t_vec point, t_vec norm);
+t_color		lighting(t_material m, t_rtx *rtx, t_vec point, t_vec norm, t_vec eye);
 
 #endif

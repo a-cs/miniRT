@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:32:22 by acarneir          #+#    #+#             */
-/*   Updated: 2022/09/15 04:59:01 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/19 22:47:21 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ static int	iter_world(t_rtx *rtx, t_hit_record *rec, t_ray ray)
 			rec->front_face = temp_rec.front_face;
 			rec->norm = temp_rec.norm;
 			rec->point = temp_rec.point;
+			rec->eye = vector_mul_scal(ray.direction, -1.0);
 			rec->t = temp_rec.t;
 		}
 		world = world->next;
 	}
-	rec->color = lighting(sp->material, rtx, rec->point, rec->norm);
+	rec->color = lighting(sp->material, rtx, rec->point, rec->norm, rec->eye);
 	return (hit_anything);
 }
 
