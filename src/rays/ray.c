@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 22:32:22 by acarneir          #+#    #+#             */
-/*   Updated: 2022/09/19 22:47:21 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:17:49 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int	iter_world(t_rtx *rtx, t_hit_record *rec, t_ray ray)
 		sp = world->content;
 		if (hit_sphere(sp, ray, t, &temp_rec))
 		{
+			printf("T\n");
 			hit_anything = TRUE;
 			t[T_MAX] = temp_rec.t;
 			rec->front_face = temp_rec.front_face;

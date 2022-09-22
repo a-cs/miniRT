@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:03:23 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/19 22:47:41 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/21 22:39:38 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ typedef struct s_rtx
 	double	viewport_height;
 	double	viewport_width;
 	double	focal_length;
+	double	pixel_size;
+	double	**cam_transform;
 	t_vec	origin;
 	t_vec	horizontal;
 	t_vec	vertical;

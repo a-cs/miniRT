@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 03:48:11 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/20 00:01:03 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:13:14 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ t_sphere	*crete_sphere(double center[3], double radius)
 	sp->transform = m_multiply(translation, scaling, 4);
 	free(translation);
 	free(scaling);
-	sp->material.color = vector_to_color(create_vector(1, 0.2, 1, 0));
+	sp->material.color = vector_to_color(create_vector(0.1, 1, 0.5, 0));
 	sp->material.ambient = 0.2;
-	sp->material.diffuse = 1.7;
-	sp->material.specular = 0.1;
+	sp->material.diffuse = 0.7;
+	sp->material.specular = 0.3;
 	sp->material.shininess = 50;
 	return (sp);
 }

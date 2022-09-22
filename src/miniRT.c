@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   miniRT.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rfelipe- <rfelipe-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 03:06:00 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/14 04:29:10 by rfelipe-         ###   ########.fr       */
+/*   Updated: 2022/09/21 23:03:37 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	close_window(t_rtx *rtx)
 		free(sp->transform);
 		ft_lstclear(&rtx->world, free);
 	}
+	if (rtx->cam_transform)
+		ft_free_double_matrix(rtx->cam_transform, 4);
 	exit(0);
 }
 
