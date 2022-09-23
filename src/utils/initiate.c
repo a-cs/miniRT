@@ -6,7 +6,7 @@
 /*   By: acarneir <acarneir@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 04:05:02 by rfelipe-          #+#    #+#             */
-/*   Updated: 2022/09/22 00:11:36 by acarneir         ###   ########.fr       */
+/*   Updated: 2022/09/22 23:22:11 by acarneir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ static void	populate_list(t_rtx *rtx)
 
 	center[0] = 0;
 	center[1] = 0;
-	center[2] = -1;
-	sp = crete_sphere(center, 0.5);
+	center[2] = 0;
+	sp = crete_sphere(center, 10);
 	rtx->world = NULL;
 	ft_lstadd_back(&rtx->world, ft_lstnew((void *)sp));
 }
@@ -55,11 +55,11 @@ double	**view_transform(t_vec from, t_vec to, t_vec up)
 	orientation[1][0] = true_up.x;
 	orientation[1][1] = true_up.y;
 	orientation[1][2] = true_up.z;
-	orientation[2][0] = forward.x;
-	orientation[2][1] = forward.y;
-	orientation[2][2] = forward.z;
-	// translation = m_translation(from.x, from.y, from.z);
-	translation = identity_matrix(4);
+	orientation[2][0] = -1.0 * forward.x;
+	orientation[2][1] = -1.0 * forward.y;
+	orientation[2][2] = -1.0 * forward.z;
+	translation = m_translation(-1.0 * from.x, -1.0 * from.y, -1.0 * from.z);
+	// translation = identity_matrix(4);
 	result = m_multiply(orientation, translation, 4);
 	ft_free_double_matrix(orientation, 4);
 	ft_free_double_matrix(translation, 4);
@@ -76,15 +76,15 @@ void	initiate_rtx(t_rtx *rtx)
 
 	fov = 90;
 	theta = degree_to_radian(fov);
-	rtx->viewport_height = 2 * tan(theta / 2);
-	rtx->viewport_width = (16.0 / 9.0) * rtx->viewport_height;
-	// rtx->viewport_width = 2 * tan(theta / 2);
-	// rtx->viewport_height = rtx->viewport_width / 2;
+	// rtx->viewport_height = 2 * tan(theta / 2);
+	// rtx->viewport_width = (16.0 / 9.0) * rtx->viewport_height;
+	rtx->viewport_width = 2 * tan(theta / 2);
+	rtx->viewport_height = rtx->viewport_width / 2;
 	rtx->pixel_size = rtx->viewport_width / rtx->viewport_height; 
 	rtx->focal_length = 1.0;
-	from = create_vector(0, -1.25, 1, 1);
-	to = create_vector(0, 0, -1, 1);
-	up = create_vector(0, 1, 0, 0);
+	from = create_vector(-10, 0, 30, 1);
+	to = create_vector(0, 0, 0, 1);
+	up = create_vector(0, -0.809017, 0.587785, 0);
 	rtx->cam_transform = view_transform(from, to, up);
 	populate_list(rtx);
 	rtx->point_light.position = create_vector(-10, 10, 10, 1);
